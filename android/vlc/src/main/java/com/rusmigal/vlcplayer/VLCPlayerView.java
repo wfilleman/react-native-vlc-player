@@ -1,6 +1,5 @@
 package com.rusmigal.vlcplayer;
 
-
 import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
 import android.net.Uri;
@@ -27,20 +26,15 @@ import org.videolan.libvlc.util.VLCUtil;
 
 import java.util.ArrayList;
 
-public class VLCPlayerView extends FrameLayout implements IVLCVout.Callback, LifecycleEventListener, MediaPlayer.EventListener {
+public class VLCPlayerView extends FrameLayout
+        implements IVLCVout.Callback, LifecycleEventListener, MediaPlayer.EventListener {
 
     private boolean pausedState;
 
     public enum Events {
-        EVENT_PROGRESS("onVLCProgress"),
-        EVENT_ENDED("onVLCEnded"),
-        EVENT_STOPPED("onVLCStopped"),
-        EVENT_PLAYING("onVLCPlaying"),
-        EVENT_BUFFERING("onVLCBuffering"),
-        EVENT_PAUSED("onVLCPaused"),
-        EVENT_ERROR("onVLCError"),
-        EVENT_VOLUME_CHANGED("onVLCVolumeChanged"),
-        EVENT_SEEK("onVLCVideoSeek");
+        EVENT_PROGRESS("onVLCProgress"), EVENT_ENDED("onVLCEnded"), EVENT_STOPPED("onVLCStopped"), EVENT_PLAYING(
+                "onVLCPlaying"), EVENT_BUFFERING("onVLCBuffering"), EVENT_PAUSED("onVLCPaused"), EVENT_ERROR(
+                        "onVLCError"), EVENT_VOLUME_CHANGED("onVLCVolumeChanged"), EVENT_SEEK("onVLCVideoSeek");
 
         private final String mName;
 
@@ -112,14 +106,17 @@ public class VLCPlayerView extends FrameLayout implements IVLCVout.Callback, Lif
 
     private void initializePlayerIfNeeded() {
         if (mMediaPlayer == null) {
-            final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
+            final SharedPreferences pref = PreferenceManager
+                    .getDefaultSharedPreferences(getContext().getApplicationContext());
             // Create LibVLC
             ArrayList<String> options = new ArrayList<>(50);
             int deblocking = getDeblocking(-1);
 
             int networkCaching = pref.getInt("network_caching_value", 0);
-            if (networkCaching > 60000) networkCaching = 60000;
-            else if (networkCaching < 0) networkCaching = 0;
+            if (networkCaching > 60000)
+                networkCaching = 60000;
+            else if (networkCaching < 0)
+                networkCaching = 0;
             options.add("--audio-time-stretch");
             options.add("--avcodec-skiploopfilter");
             options.add("" + deblocking);
@@ -129,7 +126,8 @@ public class VLCPlayerView extends FrameLayout implements IVLCVout.Callback, Lif
             options.add("0");
             options.add("--subsdec-encoding");
             options.add("--stats");
-            if (networkCaching > 0) options.add("--network-caching=" + networkCaching);
+            if (networkCaching > 0)
+                options.add("--network-caching=" + networkCaching);
             options.add("--androidwindow-chroma");
             options.add("RV32");
 
@@ -174,12 +172,16 @@ public class VLCPlayerView extends FrameLayout implements IVLCVout.Callback, Lif
              * Skip non-key (3) for all devices that don't meet anything above
              */
             VLCUtil.MachineSpecs m = VLCUtil.getMachineSpecs();
-            if (m == null) return ret;
-            if ((m.hasArmV6 && !(m.hasArmV7)) || m.hasMips) ret = 4;
-            else if (m.frequency >= 1200 && m.processors > 2) ret = 1;
+            if (m == null)
+                return ret;
+            if ((m.hasArmV6 && !(m.hasArmV7)) || m.hasMips)
+                ret = 4;
+            else if (m.frequency >= 1200 && m.processors > 2)
+                ret = 1;
             else if (m.bogoMIPS >= 1200 && m.processors > 2) {
                 ret = 1;
-            } else ret = 3;
+            } else
+                ret = 3;
         } else if (deblocking > 4) { // sanity check
             ret = 3;
         }
@@ -187,7 +189,8 @@ public class VLCPlayerView extends FrameLayout implements IVLCVout.Callback, Lif
     }
 
     private void releasePlayer() {
-        if (libvlc == null) return;
+        if (libvlc == null)
+            return;
         mMediaPlayer.stop();
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         vout.removeCallback(this);
@@ -243,32 +246,39 @@ public class VLCPlayerView extends FrameLayout implements IVLCVout.Callback, Lif
         counter++;
 
         switch (mCurrentSize) {
-            case SURFACE_BEST_FIT:
-                if (counter > 2) if (displayAspectRatio < aspectRatio) displayHeight = displayWidth / aspectRatio;
-                else displayWidth = displayHeight * aspectRatio;
-                break;
-            case SURFACE_FIT_HORIZONTAL:
+        case SURFACE_BEST_FIT:
+            if (counter > 2)
+                if (displayAspectRatio < aspectRatio)
+                    displayHeight = displayWidth / aspectRatio;
+                else
+                    displayWidth = displayHeight * aspectRatio;
+            break;
+        case SURFACE_FIT_HORIZONTAL:
+            displayHeight = displayWidth / aspectRatio;
+            break;
+        case SURFACE_FIT_VERTICAL:
+            displayWidth = displayHeight * aspectRatio;
+            break;
+        case SURFACE_FILL:
+            break;
+        case SURFACE_16_9:
+            aspectRatio = 16.0 / 9.0;
+            if (displayAspectRatio < aspectRatio)
                 displayHeight = displayWidth / aspectRatio;
-                break;
-            case SURFACE_FIT_VERTICAL:
+            else
                 displayWidth = displayHeight * aspectRatio;
-                break;
-            case SURFACE_FILL:
-                break;
-            case SURFACE_16_9:
-                aspectRatio = 16.0 / 9.0;
-                if (displayAspectRatio < aspectRatio) displayHeight = displayWidth / aspectRatio;
-                else displayWidth = displayHeight * aspectRatio;
-                break;
-            case SURFACE_4_3:
-                aspectRatio = 4.0 / 3.0;
-                if (displayAspectRatio < aspectRatio) displayHeight = displayWidth / aspectRatio;
-                else displayWidth = displayHeight * aspectRatio;
-                break;
-            case SURFACE_ORIGINAL:
-                displayHeight = mVideoVisibleHeight;
-                displayWidth = visibleWidth;
-                break;
+            break;
+        case SURFACE_4_3:
+            aspectRatio = 4.0 / 3.0;
+            if (displayAspectRatio < aspectRatio)
+                displayHeight = displayWidth / aspectRatio;
+            else
+                displayWidth = displayHeight * aspectRatio;
+            break;
+        case SURFACE_ORIGINAL:
+            displayHeight = mVideoVisibleHeight;
+            displayWidth = visibleWidth;
+            break;
         }
 
         // set display size
@@ -331,8 +341,10 @@ public class VLCPlayerView extends FrameLayout implements IVLCVout.Callback, Lif
     }
 
     @Override
-    public void onNewLayout(IVLCVout vout, int width, int height, int visibleWidth, int visibleHeight, int sarNum, int sarDen) {
-        if (width * height == 0) return;
+    public void onNewLayout(IVLCVout vout, int width, int height, int visibleWidth, int visibleHeight, int sarNum,
+            int sarDen) {
+        if (width * height == 0)
+            return;
 
         // store video size
         mSarNum = sarNum;
@@ -382,33 +394,38 @@ public class VLCPlayerView extends FrameLayout implements IVLCVout.Callback, Lif
     public void onEvent(MediaPlayer.Event event) {
         WritableMap eventMap = Arguments.createMap();
         switch (event.type) {
-            case MediaPlayer.Event.EndReached:
-                pausedState = false;
-                eventMap.putBoolean(EVENT_PROP_END, true);
-                mEventEmitter.receiveEvent(getId(), Events.EVENT_ENDED.toString(), eventMap);
-                break;
-            case MediaPlayer.Event.Stopped:
-                mEventEmitter.receiveEvent(getId(), Events.EVENT_STOPPED.toString(), null);
-                break;
-            case MediaPlayer.Event.Playing:
-                eventMap.putDouble(EVENT_PROP_DURATION, mMediaPlayer.getLength());
-                mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), eventMap);
-                break;
-//            case MediaPlayer.Event.Buffering:
-//                mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), null);
-//                break;
-            case MediaPlayer.Event.Paused:
-                mEventEmitter.receiveEvent(getId(), Events.EVENT_PAUSED.toString(), null);
-                break;
-            case MediaPlayer.Event.EncounteredError:
-                mEventEmitter.receiveEvent(getId(), Events.EVENT_ERROR.toString(), null);
-                break;
-            case MediaPlayer.Event.TimeChanged:
-                eventMap.putDouble(EVENT_PROP_CURRENT_TIME, mMediaPlayer.getTime());
-                eventMap.putDouble(EVENT_PROP_DURATION, mMediaPlayer.getLength());
-                eventMap.putDouble(EVENT_PROP_POSITION, mMediaPlayer.getPosition());
-                mEventEmitter.receiveEvent(getId(), Events.EVENT_PROGRESS.toString(), eventMap);
-                break;
+        case MediaPlayer.Event.EndReached:
+            pausedState = false;
+            eventMap.putBoolean(EVENT_PROP_END, true);
+            mEventEmitter.receiveEvent(getId(), Events.EVENT_ENDED.toString(), eventMap);
+            break;
+        case MediaPlayer.Event.Stopped:
+            mEventEmitter.receiveEvent(getId(), Events.EVENT_STOPPED.toString(), null);
+            break;
+        case MediaPlayer.Event.Playing:
+            eventMap.putDouble(EVENT_PROP_DURATION, mMediaPlayer.getLength());
+            mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), eventMap);
+            break;
+        //            case MediaPlayer.Event.Buffering:
+        //                mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), null);
+        //                break;
+        case MediaPlayer.Event.Paused:
+            mEventEmitter.receiveEvent(getId(), Events.EVENT_PAUSED.toString(), null);
+            break;
+        case MediaPlayer.Event.EncounteredError:
+            mEventEmitter.receiveEvent(getId(), Events.EVENT_ERROR.toString(), null);
+            break;
+        case MediaPlayer.Event.TimeChanged:
+            long ct = mMediaPlayer.getTime();
+            long dur = mMediaPlayer.getLength();
+            float pos = mMediaPlayer.getPosition();
+            pos = pos == Double.POSITIVE_INFINITY ? -1 : pos;
+
+            eventMap.putDouble(EVENT_PROP_CURRENT_TIME, ct);
+            eventMap.putDouble(EVENT_PROP_DURATION, dur);
+            eventMap.putDouble(EVENT_PROP_POSITION, pos);
+            mEventEmitter.receiveEvent(getId(), Events.EVENT_PROGRESS.toString(), eventMap);
+            break;
         }
     }
 }
