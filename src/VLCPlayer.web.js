@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactNative from 'react-native'
 import PropTypes from 'prop-types'
+import flvjs from 'flv.js'
 
 const {
   Component
@@ -12,7 +13,7 @@ const {
 } = ReactNative
 
 export default class VLCPlayer extends Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
     this.seek = this.seek.bind(this)
     this.snapshot = this.snapshot.bind(this)
@@ -27,72 +28,100 @@ export default class VLCPlayer extends Component {
     this._onVolumeChanged = this._onVolumeChanged.bind(this)
   }
 
-  setNativeProps (nativeProps) {
+  setNativeProps(nativeProps) {
     this._root.setNativeProps(nativeProps)
   }
 
-  seek (pos) {
+  seek(pos) {
     this.setNativeProps({ seek: pos })
   }
 
-  snapshot (path) {
+  snapshot(path) {
     this.setNativeProps({ snapshotPath: path })
   }
 
-  _assignRoot (component) {
+  _assignRoot(component) {
     this._root = component
   }
 
-  _onBuffering (event) {
+  _onBuffering(event) {
     if (this.props.onVLCBuffering) {
       this.props.onVLCBuffering(event.nativeEvent)
     }
   }
 
-  _onError (event) {
+  _onError(event) {
     if (this.props.onVLCError) {
       this.props.onVLCError(event.nativeEvent)
     }
   }
 
-  _onProgress (event) {
+  _onProgress(event) {
     if (this.props.onVLCProgress) {
       this.props.onVLCProgress(event.nativeEvent)
     }
   }
 
-  _onEnded (event) {
+  _onEnded(event) {
     if (this.props.onVLCEnded) {
       this.props.onVLCEnded(event.nativeEvent)
     }
   }
 
-  _onStopped (event) {
+  _onStopped(event) {
     this.setNativeProps({ paused: true })
     if (this.props.onVLCStopped) {
       this.props.onVLCStopped(event.nativeEvent)
     }
   }
 
-  _onPaused (event) {
+  _onPaused(event) {
     if (this.props.onVLCPaused) {
       this.props.onVLCPaused(event.nativeEvent)
     }
   }
 
-  _onPlaying (event) {
+  _onPlaying(event) {
     if (this.props.onVLCPlaying) {
       this.props.onVLCPlaying(event.nativeEvent)
     }
   }
 
-  _onVolumeChanged (event) {
+  _onVolumeChanged(event) {
     if (this.props.onVLCVolumeChanged) {
       this.props.onVLCVolumeChanged(event.nativeEvent)
     }
   }
 
-  render () {
+  componentDidMount() {
+    const { source, style } = this.props;
+    if (flvjs.isSupported()) {
+      let uri = source.uri;
+      let url = uri.replace('rtmp:', 'ws:').replace('1326', '1327');
+
+      var videoElement = this.refs['VIDEO'];
+      var flvPlayer = flvjs.createPlayer({
+        type: 'flv',
+        url: url + '.flv',
+        width: style.width,
+        height: style.height
+      });
+
+      flvPlayer.on(flvjs.Events.LOADING_COMPLETE, () => {
+        setTimeout(() => { this._onEnded({ nativeEvent: {} }); }, 5000)
+      });
+
+      flvPlayer.on(flvjs.Events.ERROR, (err) => {
+        this._onError({ nativeEvent: err });
+      });
+
+      flvPlayer.attachMediaElement(videoElement);
+      flvPlayer.load();
+      flvPlayer.play();
+    }
+  }
+
+  render() {
     const {
       source
     } = this.props
@@ -113,7 +142,7 @@ export default class VLCPlayer extends Component {
     })
 
     return (
-      <View ref={this._assignRoot} {...nativeProps} />
+      <video ref={'VIDEO'} style={nativeProps.style} />
     )
   }
 }
