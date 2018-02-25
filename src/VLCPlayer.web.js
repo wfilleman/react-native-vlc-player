@@ -142,7 +142,9 @@ export default class VLCPlayer extends Component {
     })
 
     return (
-      <video ref={'VIDEO'} style={nativeProps.style} />
+      <View style={nativeProps.style}>
+        <video ref={'VIDEO'} />
+      </View>
     )
   }
 }
