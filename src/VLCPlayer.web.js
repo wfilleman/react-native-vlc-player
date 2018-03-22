@@ -97,7 +97,8 @@ export default class VLCPlayer extends Component {
     const { source, style } = this.props;
     if (flvjs.isSupported()) {
       let uri = source.uri;
-      let url = uri.replace('rtmp:', 'ws:').replace('1935', '');
+      let prot = window.location.protocol;
+      let url = uri.replace('rtmp:', prot === 'http:' ? 'ws:' : 'wss:').replace('1935', '');
 
       var videoElement = this.refs['VIDEO'];
       var flvPlayer = flvjs.createPlayer({
