@@ -98,32 +98,36 @@ export default class VLCPlayer extends Component {
     if (flvjs.isSupported()) {
       let uri = source.uri;
       let prot = window.location.protocol;
-      let url = uri.replace('rtmp:', prot === 'http:' ? 'http:' : 'https:').replace('1935', '1936');
+      let url = uri.replace('rtmp:', prot === 'http:' ? 'http:' : 'https:').replace('1935', '');
 
-      var videoElement = this.refs['VIDEO'];
-      var flvPlayer = flvjs.createPlayer({
-        type: 'flv',
-        url: url + '.flv',
-        width: style.width,
-        height: style.height,
-        isLive: true,
-        autoCleanupSourceBuffer: true,
-      }, {
-        stashInitialSize: '600KB',
-        fixAudioTimestampGap: false,
-      });
+      try {
+        var videoElement = this.refs['VIDEO'];
+        var flvPlayer = flvjs.createPlayer({
+          type: 'flv',
+          url: url + '.flv',
+          width: style.width,
+          height: style.height,
+          isLive: true,
+          autoCleanupSourceBuffer: true,
+        }, {
+          stashInitialSize: '600KB',
+          fixAudioTimestampGap: false,
+        });
 
-      flvPlayer.on(flvjs.Events.LOADING_COMPLETE, () => {
-        setTimeout(() => { this._onEnded({ nativeEvent: {} }); }, 5000)
-      });
+        flvPlayer.on(flvjs.Events.LOADING_COMPLETE, () => {
+          setTimeout(() => { this._onEnded({ nativeEvent: {} }); }, 5000)
+        });
 
-      flvPlayer.on(flvjs.Events.ERROR, (err) => {
+        flvPlayer.on(flvjs.Events.ERROR, (err) => {
+          this._onError({ nativeEvent: err });
+        });
+
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        flvPlayer.play();
+      } catch (err) {
         this._onError({ nativeEvent: err });
-      });
-
-      flvPlayer.attachMediaElement(videoElement);
-      flvPlayer.load();
-      flvPlayer.play();
+      }
     }
   }
 
