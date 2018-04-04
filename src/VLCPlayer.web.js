@@ -98,14 +98,19 @@ export default class VLCPlayer extends Component {
     if (flvjs.isSupported()) {
       let uri = source.uri;
       let prot = window.location.protocol;
-      let url = uri.replace('rtmp:', prot === 'http:' ? 'ws:' : 'wss:').replace('1935', '');
+      let url = uri.replace('rtmp:', prot === 'http:' ? 'http:' : 'https:').replace('1935', '1936');
 
       var videoElement = this.refs['VIDEO'];
       var flvPlayer = flvjs.createPlayer({
         type: 'flv',
         url: url + '.flv',
         width: style.width,
-        height: style.height
+        height: style.height,
+        isLive: true,
+        autoCleanupSourceBuffer: true,
+      }, {
+        stashInitialSize: '600KB',
+        fixAudioTimestampGap: false,
       });
 
       flvPlayer.on(flvjs.Events.LOADING_COMPLETE, () => {
