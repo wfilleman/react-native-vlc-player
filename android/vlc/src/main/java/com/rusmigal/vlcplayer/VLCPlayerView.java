@@ -32,9 +32,9 @@ public class VLCPlayerView extends FrameLayout
     private boolean pausedState;
 
     public enum Events {
-        EVENT_PROGRESS("onVLCProgress"), EVENT_ENDED("onVLCEnded"), EVENT_STOPPED("onVLCStopped"), EVENT_PLAYING(
-                "onVLCPlaying"), EVENT_BUFFERING("onVLCBuffering"), EVENT_PAUSED("onVLCPaused"), EVENT_ERROR(
-                        "onVLCError"), EVENT_VOLUME_CHANGED("onVLCVolumeChanged"), EVENT_SEEK("onVLCVideoSeek");
+        EVENT_PROGRESS("onVLCProgress"), EVENT_ENDED("onVLCEnded"), EVENT_STOPPED("onVLCStopped"),
+        EVENT_PLAYING("onVLCPlaying"), EVENT_BUFFERING("onVLCBuffering"), EVENT_PAUSED("onVLCPaused"),
+        EVENT_ERROR("onVLCError"), EVENT_VOLUME_CHANGED("onVLCVolumeChanged"), EVENT_SEEK("onVLCVideoSeek");
 
         private final String mName;
 
@@ -133,7 +133,7 @@ public class VLCPlayerView extends FrameLayout
 
             options.add("-vv");
 
-            libvlc = new LibVLC(options);
+            libvlc = new LibVLC(mThemedReactContext, options);
 
             holder.setKeepScreenOn(true);
 
@@ -406,9 +406,9 @@ public class VLCPlayerView extends FrameLayout
             eventMap.putDouble(EVENT_PROP_DURATION, mMediaPlayer.getLength());
             mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), eventMap);
             break;
-        //            case MediaPlayer.Event.Buffering:
-        //                mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), null);
-        //                break;
+        case MediaPlayer.Event.Buffering:
+            mEventEmitter.receiveEvent(getId(), Events.EVENT_BUFFERING.toString(), null);
+            break;
         case MediaPlayer.Event.Paused:
             mEventEmitter.receiveEvent(getId(), Events.EVENT_PAUSED.toString(), null);
             break;
