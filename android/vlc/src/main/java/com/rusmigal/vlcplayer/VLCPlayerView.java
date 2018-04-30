@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.LifecycleEventListener;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
@@ -25,6 +26,8 @@ import org.videolan.libvlc.MediaPlayer;
 import org.videolan.libvlc.util.VLCUtil;
 
 import java.util.ArrayList;
+
+import static com.rusmigal.vlcplayer.VLCPlayerViewManager.mOptions;
 
 public class VLCPlayerView extends FrameLayout
         implements IVLCVout.Callback, LifecycleEventListener, MediaPlayer.EventListener {
@@ -104,6 +107,21 @@ public class VLCPlayerView extends FrameLayout
         initializePlayerIfNeeded();
     }
 
+    String[] defaultOptions = { 
+        "--audio-time-stretch", 
+        "--avcodec-skiploopfilter", 
+        "" + getDeblocking(-1),
+        "--avcodec-skip-frame", 
+        "0", 
+        "--avcodec-skip-idct", 
+        "0", 
+        "--subsdec-encoding", 
+        "--stats",
+        "--androidwindow-chroma", 
+        "RV32", 
+        "-vv" 
+    };
+
     private void initializePlayerIfNeeded() {
         if (mMediaPlayer == null) {
             final SharedPreferences pref = PreferenceManager
@@ -117,21 +135,13 @@ public class VLCPlayerView extends FrameLayout
                 networkCaching = 60000;
             else if (networkCaching < 0)
                 networkCaching = 0;
-            options.add("--audio-time-stretch");
-            options.add("--avcodec-skiploopfilter");
-            options.add("" + deblocking);
-            options.add("--avcodec-skip-frame");
-            options.add("0");
-            options.add("--avcodec-skip-idct");
-            options.add("0");
-            options.add("--subsdec-encoding");
-            options.add("--stats");
+
+            for (String s: defaultOptions) {
+                options.add(s);
+            }
+
             if (networkCaching > 0)
                 options.add("--network-caching=" + networkCaching);
-            options.add("--androidwindow-chroma");
-            options.add("RV32");
-
-            options.add("-vv");
 
             libvlc = new LibVLC(mThemedReactContext, options);
 
@@ -147,6 +157,19 @@ public class VLCPlayerView extends FrameLayout
 
     private void setMedia(String filePath) {
         // Set up video output
+        ArrayList<String> options = new ArrayList<>(50);
+        ArrayList initOptions = mOptions != null && mOptions.getArray("initOptions") != null ? mOptions.getArray("initOptions").toArrayList() : new ArrayList();
+
+        for (String s: defaultOptions) {
+            options.add(s);
+        }
+
+        for (int i = 0; i < initOptions.size(); i++) {
+            options.add(initOptions.get(i).toString());
+        }
+
+        libvlc = new LibVLC(mThemedReactContext, options);
+
         final IVLCVout vout = mMediaPlayer.getVLCVout();
         if (!vout.areViewsAttached()) {
             vout.setVideoView(mSurface);
@@ -427,5 +450,4 @@ public class VLCPlayerView extends FrameLayout
             mEventEmitter.receiveEvent(getId(), Events.EVENT_PROGRESS.toString(), eventMap);
             break;
         }
-    }
-}
+    }}

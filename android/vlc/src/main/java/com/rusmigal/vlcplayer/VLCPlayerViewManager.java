@@ -1,6 +1,5 @@
 package com.rusmigal.vlcplayer;
 
-
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ViewGroupManager;
@@ -20,6 +19,8 @@ public class VLCPlayerViewManager extends ViewGroupManager<VLCPlayerView> {
     public static final String PROP_PAUSED = "paused";
     public static final String PROP_VOLUME = "volume";
     public static final String PROP_RESIZE = "resize";
+
+    public static ReadableMap mOptions;
 
     @Override
     public String getName() {
@@ -49,6 +50,7 @@ public class VLCPlayerViewManager extends ViewGroupManager<VLCPlayerView> {
 
     @ReactProp(name = PROP_SOURCE)
     public void setPath(final VLCPlayerView playerView, ReadableMap map) {
+        mOptions = map;
         String path = map.getString("uri");
         boolean autoPlay = map.getBoolean("autoplay");
         playerView.setAutoPlay(autoPlay);
