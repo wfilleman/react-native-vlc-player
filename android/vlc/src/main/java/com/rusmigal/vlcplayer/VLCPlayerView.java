@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
@@ -36,7 +37,7 @@ public class VLCPlayerView extends FrameLayout
 
     public enum Events {
         EVENT_PROGRESS("onVLCProgress"), EVENT_ENDED("onVLCEnded"), EVENT_STOPPED("onVLCStopped"),
-        EVENT_PLAYING("onVLCPlaying"), EVENT_BUFFERING("onVLCBuffering"), EVENT_PAUSED("onVLCPaused"),
+        EVENT_PLAYING("onVLCPlaying"), EVENT_BUFFERING("onVLCBuffering"), EVENT_PAUSED("onVLCPaused"), RECEIVED_DIMENSIONS("onDimsReceived"),
         EVENT_ERROR("onVLCError"), EVENT_VOLUME_CHANGED("onVLCVolumeChanged"), EVENT_SEEK("onVLCVideoSeek");
 
         private final String mName;
@@ -107,19 +108,19 @@ public class VLCPlayerView extends FrameLayout
         initializePlayerIfNeeded();
     }
 
-    String[] defaultOptions = { 
-        "--audio-time-stretch", 
-        "--avcodec-skiploopfilter", 
-        "" + getDeblocking(-1),
-        "--avcodec-skip-frame", 
-        "0", 
-        "--avcodec-skip-idct", 
-        "0", 
-        "--subsdec-encoding", 
-        "--stats",
-        "--androidwindow-chroma", 
-        "RV32", 
-        "-vv" 
+    String[] defaultOptions = {
+            "--audio-time-stretch",
+            "--avcodec-skiploopfilter",
+            "" + getDeblocking(-1),
+            "--avcodec-skip-frame",
+            "0",
+            "--avcodec-skip-idct",
+            "0",
+            "--subsdec-encoding",
+            "--stats",
+            "--androidwindow-chroma",
+            "RV32",
+            "-vv"
     };
 
     private void initializePlayerIfNeeded() {
@@ -269,39 +270,39 @@ public class VLCPlayerView extends FrameLayout
         counter++;
 
         switch (mCurrentSize) {
-        case SURFACE_BEST_FIT:
-            if (counter > 2)
+            case SURFACE_BEST_FIT:
+                if (counter > 2)
+                    if (displayAspectRatio < aspectRatio)
+                        displayHeight = displayWidth / aspectRatio;
+                    else
+                        displayWidth = displayHeight * aspectRatio;
+                break;
+            case SURFACE_FIT_HORIZONTAL:
+                displayHeight = displayWidth / aspectRatio;
+                break;
+            case SURFACE_FIT_VERTICAL:
+                displayWidth = displayHeight * aspectRatio;
+                break;
+            case SURFACE_FILL:
+                break;
+            case SURFACE_16_9:
+                aspectRatio = 16.0 / 9.0;
                 if (displayAspectRatio < aspectRatio)
                     displayHeight = displayWidth / aspectRatio;
                 else
                     displayWidth = displayHeight * aspectRatio;
-            break;
-        case SURFACE_FIT_HORIZONTAL:
-            displayHeight = displayWidth / aspectRatio;
-            break;
-        case SURFACE_FIT_VERTICAL:
-            displayWidth = displayHeight * aspectRatio;
-            break;
-        case SURFACE_FILL:
-            break;
-        case SURFACE_16_9:
-            aspectRatio = 16.0 / 9.0;
-            if (displayAspectRatio < aspectRatio)
-                displayHeight = displayWidth / aspectRatio;
-            else
-                displayWidth = displayHeight * aspectRatio;
-            break;
-        case SURFACE_4_3:
-            aspectRatio = 4.0 / 3.0;
-            if (displayAspectRatio < aspectRatio)
-                displayHeight = displayWidth / aspectRatio;
-            else
-                displayWidth = displayHeight * aspectRatio;
-            break;
-        case SURFACE_ORIGINAL:
-            displayHeight = mVideoVisibleHeight;
-            displayWidth = visibleWidth;
-            break;
+                break;
+            case SURFACE_4_3:
+                aspectRatio = 4.0 / 3.0;
+                if (displayAspectRatio < aspectRatio)
+                    displayHeight = displayWidth / aspectRatio;
+                else
+                    displayWidth = displayHeight * aspectRatio;
+                break;
+            case SURFACE_ORIGINAL:
+                displayHeight = mVideoVisibleHeight;
+                displayWidth = visibleWidth;
+                break;
         }
 
         // set display size
@@ -365,7 +366,7 @@ public class VLCPlayerView extends FrameLayout
 
     @Override
     public void onNewLayout(IVLCVout vout, int width, int height, int visibleWidth, int visibleHeight, int sarNum,
-            int sarDen) {
+                            int sarDen) {
         if (width * height == 0)
             return;
 
@@ -373,6 +374,13 @@ public class VLCPlayerView extends FrameLayout
         mSarNum = sarNum;
         mSarDen = sarDen;
         changeSurfaceLayout(width, height);
+
+        WritableMap eventMap = Arguments.createMap();
+        eventMap.putInt("width", width);
+        eventMap.putInt("height", height);
+        eventMap.putInt("visibleWidth", visibleWidth);
+        eventMap.putInt("visibleHeight", visibleHeight);
+        mEventEmitter.receiveEvent(getId(), Events.RECEIVED_DIMENSIONS.toString(), eventMap);
     }
 
     @Override
@@ -417,37 +425,37 @@ public class VLCPlayerView extends FrameLayout
     public void onEvent(MediaPlayer.Event event) {
         WritableMap eventMap = Arguments.createMap();
         switch (event.type) {
-        case MediaPlayer.Event.EndReached:
-            pausedState = false;
-            eventMap.putBoolean(EVENT_PROP_END, true);
-            mEventEmitter.receiveEvent(getId(), Events.EVENT_ENDED.toString(), eventMap);
-            break;
-        case MediaPlayer.Event.Stopped:
-            mEventEmitter.receiveEvent(getId(), Events.EVENT_STOPPED.toString(), null);
-            break;
-        case MediaPlayer.Event.Playing:
-            eventMap.putDouble(EVENT_PROP_DURATION, mMediaPlayer.getLength());
-            mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), eventMap);
-            break;
-        case MediaPlayer.Event.Buffering:
-            mEventEmitter.receiveEvent(getId(), Events.EVENT_BUFFERING.toString(), null);
-            break;
-        case MediaPlayer.Event.Paused:
-            mEventEmitter.receiveEvent(getId(), Events.EVENT_PAUSED.toString(), null);
-            break;
-        case MediaPlayer.Event.EncounteredError:
-            mEventEmitter.receiveEvent(getId(), Events.EVENT_ERROR.toString(), null);
-            break;
-        case MediaPlayer.Event.TimeChanged:
-            long ct = mMediaPlayer.getTime();
-            long dur = mMediaPlayer.getLength();
-            float pos = mMediaPlayer.getPosition();
-            pos = pos == Double.POSITIVE_INFINITY ? -1 : pos;
+            case MediaPlayer.Event.EndReached:
+                pausedState = false;
+                eventMap.putBoolean(EVENT_PROP_END, true);
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_ENDED.toString(), eventMap);
+                break;
+            case MediaPlayer.Event.Stopped:
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_STOPPED.toString(), null);
+                break;
+            case MediaPlayer.Event.Playing:
+                eventMap.putDouble(EVENT_PROP_DURATION, mMediaPlayer.getLength());
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), eventMap);
+                break;
+            case MediaPlayer.Event.Buffering:
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_BUFFERING.toString(), null);
+                break;
+            case MediaPlayer.Event.Paused:
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_PAUSED.toString(), null);
+                break;
+            case MediaPlayer.Event.EncounteredError:
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_ERROR.toString(), null);
+                break;
+            case MediaPlayer.Event.TimeChanged:
+                long ct = mMediaPlayer.getTime();
+                long dur = mMediaPlayer.getLength();
+                float pos = mMediaPlayer.getPosition();
+                pos = pos == Double.POSITIVE_INFINITY ? -1 : pos;
 
-            eventMap.putDouble(EVENT_PROP_CURRENT_TIME, ct);
-            eventMap.putDouble(EVENT_PROP_DURATION, dur);
-            eventMap.putDouble(EVENT_PROP_POSITION, pos);
-            mEventEmitter.receiveEvent(getId(), Events.EVENT_PROGRESS.toString(), eventMap);
-            break;
+                eventMap.putDouble(EVENT_PROP_CURRENT_TIME, ct);
+                eventMap.putDouble(EVENT_PROP_DURATION, dur);
+                eventMap.putDouble(EVENT_PROP_POSITION, pos);
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_PROGRESS.toString(), eventMap);
+                break;
         }
     }}
