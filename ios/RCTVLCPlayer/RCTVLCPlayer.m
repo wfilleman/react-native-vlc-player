@@ -127,9 +127,10 @@ static NSString *const playbackRate = @"rate";
     //init player && play
     [self.player setDrawable:self];
     self.player.delegate = self;
-    self.player.media = [VLCMedia mediaWithURL:_uri];
 	
 	[self.player.media addOptions:@{ @"network-caching" : @10000}];
+	
+    self.player.media = [VLCMedia mediaWithURL:_uri];
 	
 	[self setPaused:!autoplay];
 }
