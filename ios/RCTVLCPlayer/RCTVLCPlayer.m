@@ -51,23 +51,31 @@ static NSString *const playbackRate = @"rate";
 
 - (id)initWithPlayer:(VLCMediaPlayer*)player {
   if (self = [super init]) {
-      _volume = -1.0;
-      self.volumeSlider = [[[MPVolumeView alloc] init] volumeSlider];
-      self.player = player;
-      [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationWillResignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:nil];
-
-      [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(applicationWillEnterForeground:)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
-
-      [[NSNotificationCenter defaultCenter] addObserver:self
-                                               selector:@selector(volumeChanged:)
-                                                   name:@"AVSystemController_SystemVolumeDidChangeNotification"
-                                                 object:nil];
+//      _volume = -1.0;
+//      self.volumeSlider = [[[MPVolumeView alloc] init] volumeSlider];
+	  
+//	  NSMutableDictionary *mediaDictionary = [[NSMutableDictionary alloc] init];
+//
+//	  [mediaDictionary setObject:@(10000) forKey:@"network-caching"];
+//
+//	  [self.player.media addOptions:mediaDictionary];
+	  
+	  self.player = player;
+	  
+//      [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(applicationWillResignActive:)
+//                                                 name:UIApplicationWillResignActiveNotification
+//                                               object:nil];
+//
+//      [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(applicationWillEnterForeground:)
+//                                                 name:UIApplicationWillEnterForegroundNotification
+//                                               object:nil];
+//
+//      [[NSNotificationCenter defaultCenter] addObserver:self
+//                                               selector:@selector(volumeChanged:)
+//                                                   name:@"AVSystemController_SystemVolumeDidChangeNotification"
+//                                                 object:nil];
 
   }
   return self;
@@ -76,14 +84,14 @@ static NSString *const playbackRate = @"rate";
 
 - (void)applicationWillResignActive:(NSNotification *)notification {
     if (!_paused) {
-        [self setPaused:_paused];
+//        [self setPaused:_paused];
     }
 }
 
 
 - (void)applicationWillEnterForeground:(NSNotification *)notification {
     if(!_paused) {
-        [self setPaused:NO];
+//        [self setPaused:NO];
     }
 }
 
@@ -114,23 +122,43 @@ static NSString *const playbackRate = @"rate";
 
 
 - (void)setSource:(NSDictionary *)source {
-    if(self.player) {
-        [self.player pause];
-        self.player.drawable = nil;
-        self.player.delegate = nil;
-    }
+//    if(self.player) {
+//        [self.player pause];
+//        self.player.drawable = nil;
+//        self.player.delegate = nil;
+//    }
 
     NSString* uri    = [source objectForKey:@"uri"];
     BOOL    autoplay = [RCTConvert BOOL:[source objectForKey:@"autoplay"]];
     NSURL* _uri    = [NSURL URLWithString:uri];
+	NSArray* initOptions = [RCTConvert NSArray:([source objectForKey:@"initOptions"])];
 
+	//	NSMutableDictionary *mediaDictionary = [[NSMutableDictionary alloc] init];
+//	[mediaDictionary setObject:@(10000) forKey:@"network-caching"];
+//	[self.player.media addOptions:mediaDictionary];
+	
+	self.player = [[VLCMediaPlayer alloc] initWithOptions:initOptions];
+	self.player.media = [VLCMedia mediaWithURL:_uri];
+	
     //init player && play
     [self.player setDrawable:self];
     self.player.delegate = self;
 	
-	[self.player.media addOptions:@{ @"network-caching" : @10000}];
 	
-    self.player.media = [VLCMedia mediaWithURL:_uri];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(applicationWillResignActive:)
+												 name:UIApplicationWillResignActiveNotification
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(applicationWillEnterForeground:)
+												 name:UIApplicationWillEnterForegroundNotification
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(volumeChanged:)
+												 name:@"AVSystemController_SystemVolumeDidChangeNotification"
+											   object:nil];
 	
 	[self setPaused:!autoplay];
 }
