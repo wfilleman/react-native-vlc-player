@@ -54,12 +54,6 @@ static NSString *const playbackRate = @"rate";
 //      _volume = -1.0;
 //      self.volumeSlider = [[[MPVolumeView alloc] init] volumeSlider];
 	  
-//	  NSMutableDictionary *mediaDictionary = [[NSMutableDictionary alloc] init];
-//
-//	  [mediaDictionary setObject:@(10000) forKey:@"network-caching"];
-//
-//	  [self.player.media addOptions:mediaDictionary];
-	  
 	  self.player = player;
 	  
 //      [[NSNotificationCenter defaultCenter] addObserver:self
@@ -133,10 +127,6 @@ static NSString *const playbackRate = @"rate";
     NSURL* _uri    = [NSURL URLWithString:uri];
 	NSArray* initOptions = [RCTConvert NSArray:([source objectForKey:@"initOptions"])];
 
-	//	NSMutableDictionary *mediaDictionary = [[NSMutableDictionary alloc] init];
-//	[mediaDictionary setObject:@(10000) forKey:@"network-caching"];
-//	[self.player.media addOptions:mediaDictionary];
-	
 	self.player = [[VLCMediaPlayer alloc] initWithOptions:initOptions];
 	self.player.media = [VLCMedia mediaWithURL:_uri];
 	
