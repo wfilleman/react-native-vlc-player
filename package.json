@@ -2,7 +2,7 @@
   "name": "react-native-vlc-player",
   "version": "0.0.1",
   "description": "A <VLCPlayer /> element for react-native",
-  "main": "index.js",
+  "main": "src",
   "license": "MIT",
   "keywords": [
     "vlcplayer",
