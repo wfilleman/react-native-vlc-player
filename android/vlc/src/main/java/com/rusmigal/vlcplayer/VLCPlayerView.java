@@ -373,7 +373,7 @@ public class VLCPlayerView extends FrameLayout
         // store video size
         mSarNum = sarNum;
         mSarDen = sarDen;
-        changeSurfaceLayout(width, height);
+        // changeSurfaceLayout(width, height);
 
         WritableMap eventMap = Arguments.createMap();
         eventMap.putInt("width", width);
