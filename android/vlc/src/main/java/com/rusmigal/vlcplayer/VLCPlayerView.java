@@ -228,95 +228,103 @@ public class VLCPlayerView extends FrameLayout
     }
 
     private void changeSurfaceSize(int width, int height) {
-        int screenWidth = width;
-        int screenHeight = height;
-        mVideoWidth = width;
-        mVideoHeight = height;
-        mVideoVisibleWidth = width;
-        mVideoVisibleHeight = height;
+        // ф-ция работает неправильно:
+        //   при изменении размеров surfaceView ф-ция вызывается трижды
+        //     раз со значениями width, height, переданными из VLCPlayer.props.resize
+        //     два и три со значениями, равными значениям расширения видео
+        //  изменение размеров surfaceView с помощью surfaceHolder'а работает не так, как нужно:
+        //    по документации surfaceHolder меняет значения width, height только один раз
+        //    в действительности все не так как на самом деле - размеры width, heigth меняются, но только в сторону уменьшения
 
-        if (mMediaPlayer != null) {
-            final IVLCVout vlcVout = mMediaPlayer.getVLCVout();
-            vlcVout.setWindowSize(screenWidth, screenHeight);
-        }
+        // int screenWidth = width;
+        // int screenHeight = height;
+        // mVideoWidth = width;
+        // mVideoHeight = height;
+        // mVideoVisibleWidth = width;
+        // mVideoVisibleHeight = height;
 
-        double displayWidth = screenWidth, displayHeight = screenHeight;
+        // if (mMediaPlayer != null) {
+        //     final IVLCVout vlcVout = mMediaPlayer.getVLCVout();
+        //     vlcVout.setWindowSize(screenWidth, screenHeight);
+        // }
 
-        if (screenWidth < screenHeight) {
-            displayWidth = screenHeight;
-            displayHeight = screenWidth;
-        }
+        // double displayWidth = screenWidth, displayHeight = screenHeight;
 
-        // sanity check
-        if (displayWidth * displayHeight <= 1 || mVideoWidth * mVideoHeight <= 1) {
-            return;
-        }
+        // if (screenWidth < screenHeight) {
+        //     displayWidth = screenHeight;
+        //     displayHeight = screenWidth;
+        // }
 
-        // compute the aspect ratio
-        double aspectRatio, visibleWidth;
-        if (mSarDen == mSarNum) {
-            /* No indication about the density, assuming 1:1 */
-            visibleWidth = mVideoVisibleWidth;
-            aspectRatio = (double) mVideoVisibleWidth / (double) mVideoVisibleHeight;
-        } else {
-            /* Use the specified aspect ratio */
-            visibleWidth = mVideoVisibleWidth * (double) mSarNum / mSarDen;
-            aspectRatio = visibleWidth / mVideoVisibleHeight;
-        }
+        // // sanity check
+        // if (displayWidth * displayHeight <= 1 || mVideoWidth * mVideoHeight <= 1) {
+        //     return;
+        // }
 
-        // compute the display aspect ratio
-        double displayAspectRatio = displayWidth / displayHeight;
+        // // compute the aspect ratio
+        // double aspectRatio, visibleWidth;
+        // if (mSarDen == mSarNum) {
+        //     /* No indication about the density, assuming 1:1 */
+        //     visibleWidth = mVideoVisibleWidth;
+        //     aspectRatio = (double) mVideoVisibleWidth / (double) mVideoVisibleHeight;
+        // } else {
+        //     /* Use the specified aspect ratio */
+        //     visibleWidth = mVideoVisibleWidth * (double) mSarNum / mSarDen;
+        //     aspectRatio = visibleWidth / mVideoVisibleHeight;
+        // }
 
-        counter++;
+        // // compute the display aspect ratio
+        // double displayAspectRatio = displayWidth / displayHeight;
 
-        switch (mCurrentSize) {
-            case SURFACE_BEST_FIT:
-                if (counter > 2)
-                    if (displayAspectRatio < aspectRatio)
-                        displayHeight = displayWidth / aspectRatio;
-                    else
-                        displayWidth = displayHeight * aspectRatio;
-                break;
-            case SURFACE_FIT_HORIZONTAL:
-                displayHeight = displayWidth / aspectRatio;
-                break;
-            case SURFACE_FIT_VERTICAL:
-                displayWidth = displayHeight * aspectRatio;
-                break;
-            case SURFACE_FILL:
-                break;
-            case SURFACE_16_9:
-                aspectRatio = 16.0 / 9.0;
-                if (displayAspectRatio < aspectRatio)
-                    displayHeight = displayWidth / aspectRatio;
-                else
-                    displayWidth = displayHeight * aspectRatio;
-                break;
-            case SURFACE_4_3:
-                aspectRatio = 4.0 / 3.0;
-                if (displayAspectRatio < aspectRatio)
-                    displayHeight = displayWidth / aspectRatio;
-                else
-                    displayWidth = displayHeight * aspectRatio;
-                break;
-            case SURFACE_ORIGINAL:
-                displayHeight = mVideoVisibleHeight;
-                displayWidth = visibleWidth;
-                break;
-        }
+        // counter++;
 
-        // set display size
-        int finalWidth = (int) Math.ceil(displayWidth * mVideoWidth / mVideoVisibleWidth);
-        int finalHeight = (int) Math.ceil(displayHeight * mVideoHeight / mVideoVisibleHeight);
+        // switch (mCurrentSize) {
+        //     case SURFACE_BEST_FIT:
+        //         if (counter > 2)
+        //             if (displayAspectRatio < aspectRatio)
+        //                 displayHeight = displayWidth / aspectRatio;
+        //             else
+        //                 displayWidth = displayHeight * aspectRatio;
+        //         break;
+        //     case SURFACE_FIT_HORIZONTAL:
+        //         displayHeight = displayWidth / aspectRatio;
+        //         break;
+        //     case SURFACE_FIT_VERTICAL:
+        //         displayWidth = displayHeight * aspectRatio;
+        //         break;
+        //     case SURFACE_FILL:
+        //         break;
+        //     case SURFACE_16_9:
+        //         aspectRatio = 16.0 / 9.0;
+        //         if (displayAspectRatio < aspectRatio)
+        //             displayHeight = displayWidth / aspectRatio;
+        //         else
+        //             displayWidth = displayHeight * aspectRatio;
+        //         break;
+        //     case SURFACE_4_3:
+        //         aspectRatio = 4.0 / 3.0;
+        //         if (displayAspectRatio < aspectRatio)
+        //             displayHeight = displayWidth / aspectRatio;
+        //         else
+        //             displayWidth = displayHeight * aspectRatio;
+        //         break;
+        //     case SURFACE_ORIGINAL:
+        //         displayHeight = mVideoVisibleHeight;
+        //         displayWidth = visibleWidth;
+        //         break;
+        // }
 
-        SurfaceHolder holder = mSurface.getHolder();
-        holder.setFixedSize(finalWidth, finalHeight);
+        // // set display size
+        // int finalWidth = (int) Math.ceil(displayWidth * mVideoWidth / mVideoVisibleWidth);
+        // int finalHeight = (int) Math.ceil(displayHeight * mVideoHeight / mVideoVisibleHeight);
 
-        ViewGroup.LayoutParams lp = mSurface.getLayoutParams();
-        lp.width = finalWidth;
-        lp.height = finalHeight;
-        mSurface.setLayoutParams(lp);
-        mSurface.invalidate();
+        // SurfaceHolder holder = mSurface.getHolder();
+        // holder.setFixedSize(finalWidth, finalHeight);
+
+        // ViewGroup.LayoutParams lp = mSurface.getLayoutParams();
+        // lp.width = finalWidth;
+        // lp.height = finalHeight;
+        // mSurface.setLayoutParams(lp);
+        // mSurface.invalidate();
     }
 
     public void changeSurfaceLayout(int width, int height) {
@@ -339,7 +347,7 @@ public class VLCPlayerView extends FrameLayout
         pausedState = paused;
         if (paused) {
             if (mMediaPlayer.isPlaying()) {
-                mMediaPlayer.pause();
+                mMediaPlayer.stop();// pause -> stop, т.к. видео используется только для просмотра online видео
             }
         } else {
             if (!mMediaPlayer.isPlaying()) {

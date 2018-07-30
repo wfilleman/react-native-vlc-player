@@ -40,6 +40,7 @@ static NSString *const playbackRate = @"rate";
 
 @property (nonatomic) UISlider *volumeSlider;
 @property (nonatomic, strong) VLCMediaPlayer *player;
+@property (nonatomic, strong) MPVolumeView *volumeView;
 
 @end
 
@@ -50,50 +51,57 @@ static NSString *const playbackRate = @"rate";
 
 
 - (id)initWithPlayer:(VLCMediaPlayer*)player {
-  if (self = [super init]) {
-//      _volume = -1.0;
-//      self.volumeSlider = [[[MPVolumeView alloc] init] volumeSlider];
-	  
-	  self.player = player;
-	  
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(applicationWillResignActive:)
-//                                                 name:UIApplicationWillResignActiveNotification
-//                                               object:nil];
-//
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(applicationWillEnterForeground:)
-//                                                 name:UIApplicationWillEnterForegroundNotification
-//                                               object:nil];
-//
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(volumeChanged:)
-//                                                   name:@"AVSystemController_SystemVolumeDidChangeNotification"
-//                                                 object:nil];
+    if (self = [super init]) {
+        // _volume = -1.0;
+        // скрывает системный индикатор звука:
+        // создается индикатор звука, который имеет нулевой размер
+        self.volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-2000., -2000., 0.f, 0.f)];
+        NSArray *windows = [UIApplication sharedApplication].windows;
+        self.volumeView.alpha = 0.1f;
+        self.volumeView.userInteractionEnabled = NO;
+        if (windows.count > 0) {
+            [[windows objectAtIndex:0] addSubview:self.volumeView];
+        }
+        // инициирует slider, который нужен для изменения звука
+        self.volumeSlider = [self.volumeView volumeSlider];
+	    self.player = player;
+        // [[NSNotificationCenter defaultCenter] addObserver:self
+        //     selector:@selector(applicationWillResignActive:)
+        //     name:UIApplicationWillResignActiveNotification
+        //     object:nil];
 
-  }
-  return self;
+        // [[NSNotificationCenter defaultCenter] addObserver:self
+        //     selector:@selector(applicationWillEnterForeground:)
+        //     name:UIApplicationWillEnterForegroundNotification
+        //     object:nil];
+
+        // [[NSNotificationCenter defaultCenter] addObserver:self
+        //     selector:@selector(volumeChanged:)
+        //     name:@"AVSystemController_SystemVolumeDidChangeNotification"
+        //     object:nil];
+    }
+    return self;
 }
 
 
 - (void)applicationWillResignActive:(NSNotification *)notification {
-    if (!_paused) {
-//        [self setPaused:_paused];
+    // останавливать видео при сворачивании приложения
+    if (self.player) {
+        [self.player stop];
     }
 }
 
 
 - (void)applicationWillEnterForeground:(NSNotification *)notification {
-    if(!_paused) {
-//        [self setPaused:NO];
-    }
+    // восстанавливать состояние проигрывателя и открытии
+    [self setPaused:_paused];
 }
 
 
 - (void)setPaused:(BOOL)paused {
     if (self.player) {
         if (paused) {
-            [self.player pause];
+            [self.player stop];// pause -> stop; т.к. плеер используется только для просмотра online видео
         } else {
             [self.player play];
         }
@@ -116,39 +124,39 @@ static NSString *const playbackRate = @"rate";
 
 
 - (void)setSource:(NSDictionary *)source {
-//    if(self.player) {
-//        [self.player pause];
-//        self.player.drawable = nil;
-//        self.player.delegate = nil;
-//    }
+    // if(self.player) {
+    //     [self.player pause];
+    //     self.player.drawable = nil;
+    //     self.player.delegate = nil;
+    // }
 
-    NSString* uri    = [source objectForKey:@"uri"];
-    BOOL    autoplay = [RCTConvert BOOL:[source objectForKey:@"autoplay"]];
-    NSURL* _uri    = [NSURL URLWithString:uri];
+    NSString* uri = [source objectForKey:@"uri"];
+    BOOL autoplay = [RCTConvert BOOL:[source objectForKey:@"autoplay"]];
+    NSURL* _uri   = [NSURL URLWithString:uri];
 	NSArray* initOptions = [RCTConvert NSArray:([source objectForKey:@"initOptions"])];
 
 	self.player = [[VLCMediaPlayer alloc] initWithOptions:initOptions];
 	self.player.media = [VLCMedia mediaWithURL:_uri];
 	
-    //init player && play
+    // init player && play
     [self.player setDrawable:self];
     self.player.delegate = self;
 	
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(applicationWillResignActive:)
-												 name:UIApplicationWillResignActiveNotification
-											   object:nil];
+        selector:@selector(applicationWillResignActive:)
+        name:UIApplicationWillResignActiveNotification
+        object:nil];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(applicationWillEnterForeground:)
-												 name:UIApplicationWillEnterForegroundNotification
-											   object:nil];
+        selector:@selector(applicationWillEnterForeground:)
+        name:UIApplicationWillEnterForegroundNotification
+        object:nil];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(volumeChanged:)
-												 name:@"AVSystemController_SystemVolumeDidChangeNotification"
-											   object:nil];
+        selector:@selector(volumeChanged:)
+        name:@"AVSystemController_SystemVolumeDidChangeNotification"
+        object:nil];
 	
 	[self setPaused:!autoplay];
 }
