@@ -1,28 +1,54 @@
 {
-  "name": "react-native-vlc-player",
-  "version": "0.0.1",
+  "_from": "git+https://github.com/1van-rus/react-native-vlc-player.git",
+  "_id": "react-native-vlc-player@0.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/react-native-vlc-player",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/1van-rus/react-native-vlc-player.git",
+    "rawSpec": "git+https://github.com/1van-rus/react-native-vlc-player.git",
+    "saveSpec": "git+https://github.com/1van-rus/react-native-vlc-player.git",
+    "fetchSpec": "https://github.com/1van-rus/react-native-vlc-player.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/1van-rus/react-native-vlc-player.git#e974fabcb06a6b7d812da0bb6a6aa04a703b5d09",
+  "_spec": "git+https://github.com/1van-rus/react-native-vlc-player.git",
+  "_where": "/Users/wesleyfilleman/Developer/mobilinctest",
+  "author": {
+    "name": "kirill gusyatin",
+    "email": "kirill.gus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/kikill95/react-native-vlc-player/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
   "description": "A <VLCPlayer /> element for react-native",
-  "main": "src",
-  "license": "MIT",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  },
+  "homepage": "https://github.com/kikill95/react-native-vlc-player",
   "keywords": [
     "vlcplayer",
     "video",
     "player"
   ],
+  "license": "MIT",
+  "main": "src",
+  "name": "react-native-vlc-player",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikill95/react-native-vlc-player.git"
+  },
   "scripts": {
     "test:fix": "standard --fix"
   },
-  "author": {
-    "name": "kirill gusyatin",
-    "email": "kirill.gus@gmail.com"
-  },
-  "homepage": "https://github.com/kikill95/react-native-vlc-player",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kikill95/react-native-vlc-player"
-  },
-  "devDependencies": {
-    "standard": "^10.0.3"
-  },
-  "dependencies": {}
+  "version": "0.0.1"
 }

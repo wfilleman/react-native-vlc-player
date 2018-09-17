@@ -1,10 +1,13 @@
 package com.rusmigal.vlcplayer;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
@@ -25,15 +28,18 @@ import org.videolan.libvlc.LibVLC;
 import org.videolan.libvlc.Media;
 import org.videolan.libvlc.MediaPlayer;
 import org.videolan.libvlc.util.VLCUtil;
+import org.videolan.vlc.listener.MediaListenerEvent;
+import org.videolan.vlc.util.VLCOptions;
 
 import java.util.ArrayList;
 
 import static com.rusmigal.vlcplayer.VLCPlayerViewManager.mOptions;
 
 public class VLCPlayerView extends FrameLayout
-        implements IVLCVout.Callback, LifecycleEventListener, MediaPlayer.EventListener {
+        implements IVLCVout.Callback, LifecycleEventListener, MediaListenerEvent, MediaPlayer.EventListener {
 
     private boolean pausedState;
+    MyVideoView videoView;
 
     public enum Events {
         EVENT_PROGRESS("onVLCProgress"), EVENT_ENDED("onVLCEnded"), EVENT_STOPPED("onVLCStopped"),
@@ -63,12 +69,7 @@ public class VLCPlayerView extends FrameLayout
 
     private String mSrcString;
 
-    // display surface
-    private SurfaceView mSurface;
-    private SurfaceHolder holder;
-
     // media player
-    private LibVLC libvlc;
     private MediaPlayer mMediaPlayer = null;
 
     private int mVideoVisibleHeight;
@@ -102,87 +103,31 @@ public class VLCPlayerView extends FrameLayout
 
     private void init() {
         inflate(getContext(), R.layout.player, this);
-
-        mSurface = (SurfaceView) findViewById(R.id.vlc_surface);
-        holder = mSurface.getHolder();
-        initializePlayerIfNeeded();
-    }
-
-    String[] defaultOptions = {
-            "--audio-time-stretch",
-            "--avcodec-skiploopfilter",
-            "" + getDeblocking(-1),
-            "--avcodec-skip-frame",
-            "0",
-            "--avcodec-skip-idct",
-            "0",
-            "--subsdec-encoding",
-            "--stats",
-            "--androidwindow-chroma",
-            "RV32",
-            "-vv"
-    };
-
-    private void initializePlayerIfNeeded() {
-        if (mMediaPlayer == null) {
-            final SharedPreferences pref = PreferenceManager
-                    .getDefaultSharedPreferences(getContext().getApplicationContext());
-            // Create LibVLC
-            ArrayList<String> options = new ArrayList<>(50);
-            int deblocking = getDeblocking(-1);
-
-            int networkCaching = pref.getInt("network_caching_value", 0);
-            if (networkCaching > 60000)
-                networkCaching = 60000;
-            else if (networkCaching < 0)
-                networkCaching = 0;
-
-            for (String s: defaultOptions) {
-                options.add(s);
-            }
-
-            if (networkCaching > 0)
-                options.add("--network-caching=" + networkCaching);
-
-            libvlc = new LibVLC(mThemedReactContext, options);
-
-            holder.setKeepScreenOn(true);
-
-            // Create media player
-            mMediaPlayer = new MediaPlayer(libvlc);
-            holder.setFormat(PixelFormat.RGBX_8888);
-            holder.setKeepScreenOn(true);
-            mMediaPlayer.setEventListener(this);
-        }
+        videoView = (MyVideoView) findViewById(R.id.vlc_surface);
+        videoView.setMediaListenerEvent(this);
     }
 
     private void setMedia(String filePath) {
         // Set up video output
         ArrayList<String> options = new ArrayList<>(50);
-        ArrayList initOptions = mOptions != null && mOptions.getArray("initOptions") != null ? mOptions.getArray("initOptions").toArrayList() : new ArrayList();
+        ArrayList<String> initOptions = new ArrayList<>(50);
+        ReadableArray initOptionsRA = mOptions != null && mOptions.getArray("initOptions") != null ? mOptions.getArray("initOptions") : null;
 
-        for (String s: defaultOptions) {
-            options.add(s);
+        if (initOptionsRA != null) {
+            for (int i = 0; i < initOptionsRA.size(); i++) {
+                String str = initOptionsRA.getString(i);
+                initOptions.add(str);
+            }
         }
 
         for (int i = 0; i < initOptions.size(); i++) {
             options.add(initOptions.get(i).toString());
         }
 
-        libvlc = new LibVLC(mThemedReactContext, options);
-
-        final IVLCVout vout = mMediaPlayer.getVLCVout();
-        if (!vout.areViewsAttached()) {
-            vout.setVideoView(mSurface);
-            vout.addCallback(this);
-            vout.attachViews();
-        }
         Uri uri = Uri.parse(filePath);
-        media = new Media(libvlc, uri);
-        mMediaPlayer.setMedia(media);
-        if (autoPlay) {
-            mMediaPlayer.play();
-        }
+        String path = uri.toString();
+        videoView.setPath(path);
+        videoView.startPlay();
     }
 
     private static int getDeblocking(int deblocking) {
@@ -213,16 +158,11 @@ public class VLCPlayerView extends FrameLayout
     }
 
     private void releasePlayer() {
-        if (libvlc == null)
-            return;
-        mMediaPlayer.stop();
-        final IVLCVout vout = mMediaPlayer.getVLCVout();
-        vout.removeCallback(this);
-        vout.detachViews();
-        holder = null;
-        libvlc.release();
-        libvlc = null;
-
+        videoView.onStop();
+//        mMediaPlayer.stop();
+//        final IVLCVout vout = mMediaPlayer.getVLCVout();
+//        vout.removeCallback(this);
+//        vout.detachViews();
         mVideoWidth = 0;
         mVideoHeight = 0;
     }
@@ -345,13 +285,15 @@ public class VLCPlayerView extends FrameLayout
      */
     public void setPaused(boolean paused) {
         pausedState = paused;
-        if (paused) {
-            if (mMediaPlayer.isPlaying()) {
-                mMediaPlayer.stop();// pause -> stop, т.к. видео используется только для просмотра online видео
-            }
-        } else {
-            if (!mMediaPlayer.isPlaying()) {
-                mMediaPlayer.play();
+        if (mMediaPlayer != null) {
+            if (paused) {
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();// pause -> stop, т.к. видео используется только для просмотра online видео
+                }
+            } else {
+                if (!mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.play();
+                }
             }
         }
     }
@@ -372,7 +314,7 @@ public class VLCPlayerView extends FrameLayout
         mMediaPlayer.setVolume(volume);
     }
 
-    @Override
+    //@Override
     public void onNewLayout(IVLCVout vout, int width, int height, int visibleWidth, int visibleHeight, int sarNum,
                             int sarDen) {
         if (width * height == 0)
@@ -401,7 +343,7 @@ public class VLCPlayerView extends FrameLayout
 
     }
 
-    @Override
+    //@Override
     public void onHardwareAccelerationError(IVLCVout vout) {
         // Handle errors with hardware acceleration
         this.releasePlayer();
@@ -429,7 +371,6 @@ public class VLCPlayerView extends FrameLayout
 
     }
 
-    @Override
     public void onEvent(MediaPlayer.Event event) {
         WritableMap eventMap = Arguments.createMap();
         switch (event.type) {
@@ -466,4 +407,88 @@ public class VLCPlayerView extends FrameLayout
                 mEventEmitter.receiveEvent(getId(), Events.EVENT_PROGRESS.toString(), eventMap);
                 break;
         }
-    }}
+    }
+
+    long time;
+
+    @Override
+    public void eventBuffing(int event, float buffing) {
+        Log.i("yyl", "eventBuffing");
+        mThemedReactContext.getCurrentActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_BUFFERING.toString(), null);
+            }
+        });
+    }
+
+    @Override
+    public void eventPlayInit(boolean openingVideo) {
+        if (!openingVideo) {
+            Log.i("yyl", "eventPlayInit - not openingVideo");
+            time = System.currentTimeMillis();
+            mThemedReactContext.getCurrentActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mEventEmitter.receiveEvent(getId(), Events.EVENT_STOPPED.toString(), null);
+                }
+            });
+        } else {
+            long useTime = System.currentTimeMillis() - time;
+            Log.i("yyl", "=" + useTime);
+        }
+        if (openingVideo) {
+            Log.i("yyl", "eventPlayInit - openingVideo");
+        }
+    }
+
+
+    @Override
+    public void eventStop(boolean isPlayError) {
+        Log.i("yyl", "eventStop");
+        mThemedReactContext.getCurrentActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_STOPPED.toString(), null);
+            }
+        });
+
+    }
+
+
+    public void eventError(int error, boolean show) {
+        Log.i("yyl", "eventError");
+        mThemedReactContext.getCurrentActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mEventEmitter.receiveEvent(getId(), Events.EVENT_ERROR.toString(), null);
+            }
+        });
+    }
+
+    @Override
+    public void eventPlay(boolean isPlaying) {
+        if (isPlaying) {
+            Log.i("yyl", "eventPlay - isPlaying");
+            long useTime = System.currentTimeMillis() - time;
+            Log.i("yyl", "=" + useTime);
+
+            mThemedReactContext.getCurrentActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mEventEmitter.receiveEvent(getId(), Events.EVENT_PLAYING.toString(), null);
+                }
+            });
+
+        } else {
+            Log.i("yyl", "eventPlay - not isPlaying");
+            mThemedReactContext.getCurrentActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mEventEmitter.receiveEvent(getId(), Events.EVENT_STOPPED.toString(), null);
+                }
+            });
+        }
+    }
+}
+

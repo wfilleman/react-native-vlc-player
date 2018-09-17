@@ -242,46 +242,42 @@
 		0CA30C4E1D07E0DB003B09F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../ios/Pods/MobileVLCKit-unstable/MobileVLCKit-binary";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../ios/Pods/MobileVLCKit";
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../../../ios/Pods/MobileVLCKit-unstable/MobileVLCKit-binary/MobileVLCKit.framework/Headers/**",
+					"$(SRCROOT)/../../../ios/Pods/MobileVLCKit/MobileVLCKit.framework/Headers/**",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/node_modules/react-native/React/**",
 					"$(inherited)",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
 		0CA30C4F1D07E0DB003B09F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../ios/Pods/MobileVLCKit-unstable/MobileVLCKit-binary";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../ios/Pods/MobileVLCKit";
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../../../ios/Pods/MobileVLCKit-unstable/MobileVLCKit-binary/MobileVLCKit.framework/Headers/**",
+					"$(SRCROOT)/../../../ios/Pods/MobileVLCKit/MobileVLCKit.framework/Headers/**",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/node_modules/react-native/React/**",
 					"$(inherited)",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

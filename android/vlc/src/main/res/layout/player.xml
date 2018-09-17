@@ -5,7 +5,7 @@
     android:background="@android:color/black"
     android:visibility="visible">
 
-    <SurfaceView
+    <com.rusmigal.vlcplayer.MyVideoView
         android:id="@+id/vlc_surface"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
