@@ -1,5 +1,6 @@
 package com.rusmigal.vlcplayer;
 
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.graphics.PixelFormat;

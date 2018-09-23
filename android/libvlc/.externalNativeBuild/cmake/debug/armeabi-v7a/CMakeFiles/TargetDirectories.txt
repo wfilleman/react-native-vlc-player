@@ -1,0 +1,3 @@
+/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/yylRecord.dir

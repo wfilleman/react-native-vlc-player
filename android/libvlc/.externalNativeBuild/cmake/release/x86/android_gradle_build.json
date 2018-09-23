@@ -1,0 +1,55 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86 --target clean"
+	],
+	"libraries" : 
+	{
+		"vlcjni-Release-x86" : 
+		{
+			"abi" : "x86",
+			"artifactName" : "vlcjni",
+			"buildType" : "release",
+			"output" : "/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/src/main/jniLibs/x86/libvlcjni.so",
+			"toolchain" : "9458435175861578700"
+		},
+		"yylRecord-Release-x86" : 
+		{
+			"abi" : "x86",
+			"artifactName" : "yylRecord",
+			"buildCommand" : "/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86 --target yylRecord",
+			"buildType" : "release",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86 -DyylRecord_EXPORTS -I../../../../include  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security  -O2 -DNDEBUG -O2 -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/src/main/cpp/yyl_record.c",
+					"workingDirectory" : "/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86"
+				},
+				
+				{
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86 -DyylRecord_EXPORTS -I../../../../include  -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security  -O2 -DNDEBUG -O2 -DNDEBUG  -fPIC      -c ",
+					"src" : "/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/src/main/cpp/yyl_log.c",
+					"workingDirectory" : "/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86"
+				}
+			],
+			"output" : "/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/build/intermediates/cmake/release/obj/x86/libyylRecord.so",
+			"toolchain" : "9458435175861578700"
+		}
+	},
+	"toolchains" : 
+	{
+		"9458435175861578700" : 
+		{
+			"cCompilerExecutable" : "/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}
