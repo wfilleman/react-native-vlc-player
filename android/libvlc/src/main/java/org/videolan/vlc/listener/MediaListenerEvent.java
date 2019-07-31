@@ -1,7 +1,7 @@
 package org.videolan.vlc.listener;
 
-import android.support.annotation.AnyThread;
-import android.support.annotation.MainThread;
+import androidx.annotation.AnyThread;
+import androidx.annotation.MainThread;
 
 /**
  * Created by yyl on 2016/3/25/025.

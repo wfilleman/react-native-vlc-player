@@ -1,0 +1,19 @@
+# ninja log v5
+3	196	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_log.c.o	d6377f2f6b68f570
+2	235	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_record.c.o	6b1fef8858956860
+236	329	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libyylRecord.so	4e4ff981a5ea16d6
+13	182	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_log.c.o	d6377f2f6b68f570
+11	214	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_record.c.o	6b1fef8858956860
+214	317	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libyylRecord.so	4e4ff981a5ea16d6
+15	189	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_log.c.o	d6377f2f6b68f570
+13	219	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_record.c.o	6b1fef8858956860
+220	318	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libyylRecord.so	4e4ff981a5ea16d6
+5	250	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_log.c.o	d6377f2f6b68f570
+3	273	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_record.c.o	6b1fef8858956860
+273	377	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libyylRecord.so	4e4ff981a5ea16d6
+1	163	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_log.c.o	d6377f2f6b68f570
+1	198	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_record.c.o	6b1fef8858956860
+198	280	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libyylRecord.so	4e4ff981a5ea16d6
+18	167	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_log.c.o	d6377f2f6b68f570
+18	195	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_record.c.o	6b1fef8858956860
+195	270	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libyylRecord.so	4e4ff981a5ea16d6

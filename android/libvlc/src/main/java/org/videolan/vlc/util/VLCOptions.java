@@ -27,7 +27,7 @@ import android.content.pm.ConfigurationInfo;
 import android.media.AudioManager;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.support.annotation.MainThread;
+import androidx.annotation.MainThread;
 import android.util.Log;
 
 import org.json.JSONArray;
