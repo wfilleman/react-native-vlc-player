@@ -10,6 +10,7 @@ android {
         versionName "3.0.13"
         externalNativeBuild {
             cmake {
+                arguments '-DBUILD_TESTING=OFF', '-DANDROID_TOOLCHAIN=gcc-4.9'
                 cppFlags "-std=c++11 -fexceptions"//-std=c++11 -frtti
             }
         }

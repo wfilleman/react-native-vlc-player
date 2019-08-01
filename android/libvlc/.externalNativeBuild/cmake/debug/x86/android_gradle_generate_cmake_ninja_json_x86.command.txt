@@ -11,5 +11,7 @@ arguments :
 -DCMAKE_TOOLCHAIN_FILE=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/build/cmake/android.toolchain.cmake
 -DCMAKE_MAKE_PROGRAM=/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
 -GAndroid Gradle - Ninja
+-DBUILD_TESTING=OFF
+-DANDROID_TOOLCHAIN=gcc-4.9
 jvmArgs : 
 
