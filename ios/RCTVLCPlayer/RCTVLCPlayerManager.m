@@ -1,6 +1,6 @@
 #import "RCTVLCPlayerManager.h"
 #import "RCTVLCPlayer.h"
-#import <MobileVLCKit.h>
+#import "MobileVLCKit.h"
 
 @implementation RCTVLCPlayerManager
 

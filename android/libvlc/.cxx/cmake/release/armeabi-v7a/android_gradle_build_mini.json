@@ -1,0 +1,21 @@
+{
+  "buildFiles": [
+    "/Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.cxx/cmake/release/armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "yylRecord-Release-armeabi-v7a": {
+      "artifactName": "yylRecord",
+      "buildCommand": "/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.cxx/cmake/release/armeabi-v7a --target yylRecord",
+      "abi": "armeabi-v7a",
+      "output": "/Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/build/intermediates/cmake/release/obj/armeabi-v7a/libyylRecord.so"
+    },
+    "vlcjni-Release-armeabi-v7a": {
+      "artifactName": "vlcjni",
+      "abi": "armeabi-v7a",
+      "output": "/Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/src/main/jniLibs/armeabi-v7a/libvlcjni.so"
+    }
+  }
+}

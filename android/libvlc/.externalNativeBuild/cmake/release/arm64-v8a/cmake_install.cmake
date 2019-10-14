@@ -1,4 +1,4 @@
-# Install script for directory: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc
+# Install script for directory: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/arm64-v8a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/arm64-v8a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

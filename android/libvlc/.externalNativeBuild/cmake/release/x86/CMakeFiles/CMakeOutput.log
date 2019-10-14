@@ -1,105 +1,109 @@
-The target system is: Android - 16 - i686
-The host system is: Darwin - 17.7.0 - x86_64
+The target system is: Android - 1 - i686
+The host system is: Darwin - 18.6.0 - x86_64
 Determining if the C compiler works passed with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_a7ea7"
-[1/2] Building C object CMakeFiles/cmTC_a7ea7.dir/testCCompiler.c.o
-[2/2] Linking C executable cmTC_a7ea7
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_33472"
+[1/2] Building C object CMakeFiles/cmTC_33472.dir/testCCompiler.c.o
+[2/2] Linking C executable cmTC_33472
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_51c51"
-[1/2] Building C object CMakeFiles/cmTC_51c51.dir/CMakeCCompilerABI.c.o
-[2/2] Linking C executable cmTC_51c51
-Android clang version 3.8.275480  (based on LLVM 3.8.275480)
-Target: i686-none-linux-android
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_57cf2"
+[1/2] Building C object CMakeFiles/cmTC_57cf2.dir/CMakeCCompilerABI.c.o
+[2/2] Linking C executable cmTC_57cf2
+Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)
+Target: i686-none-linux-android16
 Thread model: posix
-InstalledDir: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/llvm/prebuilt/darwin-x86_64/bin
-Found candidate GCC installation: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
-Selected GCC installation: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
+InstalledDir: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin
+Found candidate GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
+Found candidate GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/x86_64-linux-android/4.9.x
+Selected GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
 Candidate multilib: .;@m32
 Selected multilib: .;@m32
- "/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86 -pie --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_51c51 /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtbegin_dynamic.o -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_51c51.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtend_android.o
+ "/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_57cf2 /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtbegin_dynamic.o -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386 -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16 -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_57cf2.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtend_android.o
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(i686-linux-android-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_51c51"]
-  ignore line: [[1/2] Building C object CMakeFiles/cmTC_51c51.dir/CMakeCCompilerABI.c.o]
-  ignore line: [[2/2] Linking C executable cmTC_51c51]
-  ignore line: [Android clang version 3.8.275480  (based on LLVM 3.8.275480)]
-  ignore line: [Target: i686-none-linux-android]
+  ignore line: [Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_57cf2"]
+  ignore line: [[1/2] Building C object CMakeFiles/cmTC_57cf2.dir/CMakeCCompilerABI.c.o]
+  ignore line: [[2/2] Linking C executable cmTC_57cf2]
+  ignore line: [Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)]
+  ignore line: [Target: i686-none-linux-android16]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/llvm/prebuilt/darwin-x86_64/bin]
-  ignore line: [Found candidate GCC installation: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
-  ignore line: [Selected GCC installation: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  ignore line: [InstalledDir: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  ignore line: [Found candidate GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/x86_64-linux-android/4.9.x]
+  ignore line: [Selected GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
   ignore line: [Candidate multilib: .]
   ignore line: [@m32]
   ignore line: [Selected multilib: .]
   ignore line: [@m32]
-  link line: [ "/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86 -pie --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_51c51 /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtbegin_dynamic.o -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_51c51.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtend_android.o]
-    arg [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld] ==> ignore
-    arg [--sysroot=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86] ==> ignore
+  link line: [ "/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_57cf2 /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtbegin_dynamic.o -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386 -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16 -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_57cf2.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtend_android.o]
+    arg [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld] ==> ignore
+    arg [--sysroot=/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot] ==> ignore
     arg [-pie] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--enable-new-dtags] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
     arg [-m] ==> ignore
     arg [elf_i386] ==> ignore
     arg [-dynamic-linker] ==> ignore
     arg [/system/bin/linker] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_51c51] ==> ignore
-    arg [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtbegin_dynamic.o] ==> ignore
-    arg [-L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
-    arg [-L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib]
-    arg [-L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib] ==> dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib]
+    arg [cmTC_57cf2] ==> ignore
+    arg [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtbegin_dynamic.o] ==> ignore
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib]
+    arg [--exclude-libs] ==> ignore
+    arg [libgcc.a] ==> ignore
+    arg [--exclude-libs] ==> ignore
+    arg [libatomic.a] ==> ignore
     arg [--build-id] ==> ignore
     arg [--warn-shared-textrel] ==> ignore
     arg [--fatal-warnings] ==> ignore
     arg [--no-undefined] ==> ignore
     arg [-znoexecstack] ==> ignore
-    arg [-zrelro] ==> ignore
-    arg [-znow] ==> ignore
     arg [--gc-sections] ==> ignore
-    arg [-znocopyreloc] ==> ignore
-    arg [--build-id] ==> ignore
-    arg [--warn-shared-textrel] ==> ignore
-    arg [--fatal-warnings] ==> ignore
-    arg [--no-undefined] ==> ignore
-    arg [-znoexecstack] ==> ignore
-    arg [-zrelro] ==> ignore
-    arg [-znow] ==> ignore
-    arg [--gc-sections] ==> ignore
-    arg [-znocopyreloc] ==> ignore
-    arg [CMakeFiles/cmTC_51c51.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_57cf2.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
     arg [-lc] ==> lib [c]
     arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
-    arg [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtend_android.o] ==> ignore
+    arg [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtend_android.o] ==> ignore
   remove lib [gcc]
   remove lib [gcc]
-  collapse library dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
-  collapse library dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/i686-linux-android/lib]
-  collapse library dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib] ==> [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/i686-linux-android/lib]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib]
   implicit libs: [dl;c;dl]
-  implicit dirs: [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x;/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/i686-linux-android/lib;/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib]
+  implicit dirs: [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/i686-linux-android/lib;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib]
   implicit fwks: []
 
 
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_611c2"
-[1/2] Building C object CMakeFiles/cmTC_611c2.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_611c2
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_3c11b"
+[1/2] Building C object CMakeFiles/cmTC_3c11b.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_3c11b
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -109,11 +113,11 @@ Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/b
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_672e1"
-[1/2] Building C object CMakeFiles/cmTC_672e1.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_672e1
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_ff8cb"
+[1/2] Building C object CMakeFiles/cmTC_ff8cb.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_ff8cb
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -123,11 +127,11 @@ Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/b
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_bdd56"
-[1/2] Building C object CMakeFiles/cmTC_bdd56.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_bdd56
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_8abb6"
+[1/2] Building C object CMakeFiles/cmTC_8abb6.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_8abb6
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -135,111 +139,113 @@ Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/b
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_aafe2"
-[1/2] Building CXX object CMakeFiles/cmTC_aafe2.dir/testCXXCompiler.cxx.o
-[2/2] Linking CXX executable cmTC_aafe2
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_96144"
+[1/2] Building CXX object CMakeFiles/cmTC_96144.dir/testCXXCompiler.cxx.o
+[2/2] Linking CXX executable cmTC_96144
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1a757"
-[1/2] Building CXX object CMakeFiles/cmTC_1a757.dir/CMakeCXXCompilerABI.cpp.o
-[2/2] Linking CXX executable cmTC_1a757
-Android clang version 3.8.275480  (based on LLVM 3.8.275480)
-Target: i686-none-linux-android
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_a4c62"
+[1/2] Building CXX object CMakeFiles/cmTC_a4c62.dir/CMakeCXXCompilerABI.cpp.o
+[2/2] Linking CXX executable cmTC_a4c62
+Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)
+Target: i686-none-linux-android16
 Thread model: posix
-InstalledDir: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/llvm/prebuilt/darwin-x86_64/bin
-Found candidate GCC installation: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
-Selected GCC installation: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
+InstalledDir: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin
+Found candidate GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
+Found candidate GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/x86_64-linux-android/4.9.x
+Selected GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
 Candidate multilib: .;@m32
 Selected multilib: .;@m32
- "/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86 -pie --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_1a757 /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtbegin_dynamic.o -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_1a757.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtend_android.o
+ "/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_a4c62 /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtbegin_dynamic.o -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386 -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16 -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_a4c62.dir/CMakeCXXCompilerABI.cpp.o -Bstatic -lc++ -Bdynamic -lm -lgcc -ldl -lc -lgcc -ldl /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtend_android.o
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(i686-linux-android-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1a757"]
-  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_1a757.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [[2/2] Linking CXX executable cmTC_1a757]
-  ignore line: [Android clang version 3.8.275480  (based on LLVM 3.8.275480)]
-  ignore line: [Target: i686-none-linux-android]
+  ignore line: [Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_a4c62"]
+  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_a4c62.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [[2/2] Linking CXX executable cmTC_a4c62]
+  ignore line: [Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)]
+  ignore line: [Target: i686-none-linux-android16]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/llvm/prebuilt/darwin-x86_64/bin]
-  ignore line: [Found candidate GCC installation: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
-  ignore line: [Selected GCC installation: /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  ignore line: [InstalledDir: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  ignore line: [Found candidate GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/x86_64-linux-android/4.9.x]
+  ignore line: [Selected GCC installation: /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
   ignore line: [Candidate multilib: .]
   ignore line: [@m32]
   ignore line: [Selected multilib: .]
   ignore line: [@m32]
-  link line: [ "/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86 -pie --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_1a757 /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtbegin_dynamic.o -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_1a757.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl /Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtend_android.o]
-    arg [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld] ==> ignore
-    arg [--sysroot=/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86] ==> ignore
+  link line: [ "/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -pie -z now -z relro --hash-style=both --enable-new-dtags --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_a4c62 /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtbegin_dynamic.o -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386 -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16 -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib --exclude-libs libgcc.a --exclude-libs libatomic.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_a4c62.dir/CMakeCXXCompilerABI.cpp.o -Bstatic -lc++ -Bdynamic -lm -lgcc -ldl -lc -lgcc -ldl /Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtend_android.o]
+    arg [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld] ==> ignore
+    arg [--sysroot=/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot] ==> ignore
     arg [-pie] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--enable-new-dtags] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
     arg [-m] ==> ignore
     arg [elf_i386] ==> ignore
     arg [-dynamic-linker] ==> ignore
     arg [/system/bin/linker] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_1a757] ==> ignore
-    arg [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtbegin_dynamic.o] ==> ignore
-    arg [-L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
-    arg [-L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib]
-    arg [-L/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib] ==> dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib]
+    arg [cmTC_a4c62] ==> ignore
+    arg [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtbegin_dynamic.o] ==> ignore
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib]
+    arg [-L/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib] ==> dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib]
+    arg [--exclude-libs] ==> ignore
+    arg [libgcc.a] ==> ignore
+    arg [--exclude-libs] ==> ignore
+    arg [libatomic.a] ==> ignore
     arg [--build-id] ==> ignore
     arg [--warn-shared-textrel] ==> ignore
     arg [--fatal-warnings] ==> ignore
     arg [--no-undefined] ==> ignore
     arg [-znoexecstack] ==> ignore
-    arg [-zrelro] ==> ignore
-    arg [-znow] ==> ignore
     arg [--gc-sections] ==> ignore
-    arg [-znocopyreloc] ==> ignore
-    arg [--build-id] ==> ignore
-    arg [--warn-shared-textrel] ==> ignore
-    arg [--fatal-warnings] ==> ignore
-    arg [--no-undefined] ==> ignore
-    arg [-znoexecstack] ==> ignore
-    arg [-zrelro] ==> ignore
-    arg [-znow] ==> ignore
-    arg [--gc-sections] ==> ignore
-    arg [-znocopyreloc] ==> ignore
-    arg [CMakeFiles/cmTC_1a757.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
-    arg [-lstdc++] ==> lib [stdc++]
+    arg [CMakeFiles/cmTC_a4c62.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-Bstatic] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-Bdynamic] ==> ignore
     arg [-lm] ==> lib [m]
-    arg [-lgcc] ==> lib [gcc]
     arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
     arg [-lc] ==> lib [c]
     arg [-lgcc] ==> lib [gcc]
-    arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
-    arg [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib/crtend_android.o] ==> ignore
+    arg [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16/crtend_android.o] ==> ignore
   remove lib [gcc]
   remove lib [gcc]
-  remove lib [gcc]
-  remove lib [gcc]
-  collapse library dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
-  collapse library dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/i686-linux-android/lib]
-  collapse library dir [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib] ==> [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib]
-  implicit libs: [stdc++;m;dl;c;dl]
-  implicit dirs: [/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x;/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/toolchains/x86-4.9/prebuilt/darwin-x86_64/i686-linux-android/lib;/Users/wesleyfilleman/Developer/android-ndk/android-ndk-r14b/platforms/android-16/arch-x86/usr/lib]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/i686-linux-android/lib]
+  collapse library dir [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib] ==> [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib]
+  implicit libs: [c++;m;dl;c;dl]
+  implicit dirs: [/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib64/clang/8.0.7/lib/linux/i386;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android/16;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/i686-linux-android;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/i686-linux-android/lib;/Users/wesleyfilleman/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib]
   implicit fwks: []
 
 
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_85630"
-[1/2] Building CXX object CMakeFiles/cmTC_85630.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_85630
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_d1a02"
+[1/2] Building CXX object CMakeFiles/cmTC_d1a02.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_d1a02
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -302,11 +308,11 @@ Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/b
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_d4ba6"
-[1/2] Building CXX object CMakeFiles/cmTC_d4ba6.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_d4ba6
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_090d1"
+[1/2] Building CXX object CMakeFiles/cmTC_090d1.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_090d1
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -369,11 +375,11 @@ Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/b
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /Users/wesleyfilleman/Developer/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
+Change Dir: /Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/release/x86/CMakeFiles/CMakeTmp
 
-Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_752f4"
-[1/2] Building CXX object CMakeFiles/cmTC_752f4.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_752f4
+Run Build Command:"/Users/wesleyfilleman/Library/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_8d772"
+[1/2] Building CXX object CMakeFiles/cmTC_8d772.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_8d772
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

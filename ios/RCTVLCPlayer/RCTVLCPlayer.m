@@ -5,7 +5,7 @@
 #import "UIView+React.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
-#import <MobileVLCKit.h>
+#import "MobileVLCKit.h"
 
 static NSString *const statusKeyPath = @"status";
 static NSString *const playbackLikelyToKeepUpKeyPath = @"playbackLikelyToKeepUp";

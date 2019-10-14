@@ -1,0 +1,4 @@
+# ninja log v5
+0	63	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_log.c.o	5cd74d392000c5ae
+0	113	0	CMakeFiles/yylRecord.dir/src/main/cpp/yyl_record.c.o	4ddfc6c3e52a8aa
+113	189	0	../../../../build/intermediates/cmake/debug/obj/x86_64/libyylRecord.so	fdd9c95f3b7d06a9

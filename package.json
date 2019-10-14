@@ -1,25 +1,26 @@
 {
-  "_from": "git+https://github.com/1van-rus/react-native-vlc-player.git",
+  "_from": "git+https://github.com/wfilleman/react-native-vlc-player.git",
   "_id": "react-native-vlc-player@0.0.1",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/react-native-vlc-player",
   "_phantomChildren": {},
+  "nativePackage": true,
   "_requested": {
     "type": "git",
-    "raw": "git+https://github.com/1van-rus/react-native-vlc-player.git",
-    "rawSpec": "git+https://github.com/1van-rus/react-native-vlc-player.git",
-    "saveSpec": "git+https://github.com/1van-rus/react-native-vlc-player.git",
-    "fetchSpec": "https://github.com/1van-rus/react-native-vlc-player.git",
+    "raw": "git+https://github.com/wfilleman/react-native-vlc-player.git",
+    "rawSpec": "git+https://github.com/wfilleman/react-native-vlc-player.git",
+    "saveSpec": "git+https://github.com/wfilleman/react-native-vlc-player.git",
+    "fetchSpec": "https://github.com/wfilleman/react-native-vlc-player.git",
     "gitCommittish": null
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/1van-rus/react-native-vlc-player.git#e974fabcb06a6b7d812da0bb6a6aa04a703b5d09",
-  "_spec": "git+https://github.com/1van-rus/react-native-vlc-player.git",
-  "_where": "/Users/wesleyfilleman/Developer/mobilinctest",
+  "_resolved": "git+https://github.com/wfilleman/react-native-vlc-player.git#0c2b49a2ae9b2b2b88dc147d5857568f35d62a3d",
+  "_spec": "git+https://github.com/wfilleman/react-native-vlc-player.git",
+  "_where": "/Users/wesleyfilleman/Developer/MobiLincReact",
   "author": {
     "name": "kirill gusyatin",
     "email": "kirill.gus@gmail.com"
@@ -38,7 +39,8 @@
   "keywords": [
     "vlcplayer",
     "video",
-    "player"
+    "player",
+    "react-native"
   ],
   "license": "MIT",
   "main": "src",
