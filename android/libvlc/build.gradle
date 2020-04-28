@@ -1,16 +1,16 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 20180816
         versionName "3.0.13"
         externalNativeBuild {
             cmake {
-                arguments '-DBUILD_TESTING=OFF', '-DANDROID_TOOLCHAIN=gcc-4.9'
+                arguments '-DBUILD_TESTING=OFF', '-DANDROID_TOOLCHAIN=gcc-4.9', '-DANDROID_ARM_MODE=arm'
                 cppFlags "-std=c++11 -fexceptions"//-std=c++11 -frtti
             }
         }

@@ -1,3 +1,0 @@
-/Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/debug/x86/CMakeFiles/edit_cache.dir
-/Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
-/Users/wesleyfilleman/Developer/MobiLincReact/node_modules/react-native-vlc-player/android/libvlc/.externalNativeBuild/cmake/debug/x86/CMakeFiles/yylRecord.dir
